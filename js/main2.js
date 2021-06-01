@@ -1,69 +1,56 @@
-window.onload = inicio4;
+window.onload = init;
 
-function inicio1(){
-	var html = "";
-	var contador = 1000;
-	var lista = document.getElementById("combobox");
-
-	while(contador<=2021)
-	{
-		html = html + "<option value='"+contador+"'>"+contador+"</option>";
-		contador = contador + 1;
-	}
-
-	lista.innerHTML = html;
+function init()
+{
+	pintarCuadricula();
 }
 
-function inicio2(){
-	var html = "";
-	var contador = 50;
-	var lista = document.getElementById("lista");
-
-	do
-	{
-		html = html + "<li>"+contador+"</li>";
-		contador = contador + 1;
-
-	}while(contador<=70);
-
-	lista.innerHTML = html;
-}
-
-function inicio3(){
-	var html = "";
-	var inicio = 50;
-	var fin = 5000;
-	var lista = document.getElementById("resultados");
-
-	for (var i = inicio; i <= fin; i++) 
-	{
-		html = html + '<div class="columna '+(i%2==0?'naranja':'gris')+'">'+i+'</div>';
-	}
-
-	lista.innerHTML = html;
-}
-
-function inicio4(){
+function pintarCuadricula(){
 	
 	var html = "";
 	//var inicio = 1;
-	var fin = 100;
+	var fin = 3;
 	var grid = document.getElementById("cuadricula");
 	var contador = 1;
+	var valor = 0;
+	var salon = [];
+	salon[0] = [true,false,true];
+	salon[1] = [false,false,true];
+	salon[2] = [true,false,false];
 
-	while(contador<=fin)
+	var fila = 0;
+	var col = 0;
+
+	console.log(salon[0][0]);
+	console.log(salon[1][1]);
+	console.log(salon[2][2]);
+
+	if(localStorage.getItem("esta_logeado")=="true")
 	{
-		if(contador%2==0)
+		while(contador<=fin)
 		{
-			html = html + '<input type="button" class="gris" value="'+contador+'">';
+			console.log(fila,col);
+			valor = salon[0][col];
+			fila = fila + 1;
+			col = col + 1;
+
+			if(valor)// if(contador%2==0)
+			{
+				html = html + '<input type="button" class="naranja" value="'+contador+'">';
+			}
+			else
+			{
+				html = html + '<input type="button" class="gris" value="'+contador+'">';
+			}
+			contador = contador + 1;
 		}
-		else
-		{
-			html = html + '<input type="button" class="naranja" value="'+contador+'">';
-		}
-		contador = contador + 1;
+
+		grid.innerHTML = html;
+
+	}
+	else{
+		grid.innerHTML = "<h1>Esta seccion es bajo logeo</h1>";
 	}
 
-	grid.innerHTML = html;
 
 }

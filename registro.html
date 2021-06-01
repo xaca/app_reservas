@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Registro</title>
+	<script>
+		var nombre,apellido,email,usuario,password1,password2,boton;
+
+		window.onload = function(){
+			nombre = document.getElementById("nombre");
+			apellido = document.getElementById("apellido");
+			email = document.getElementById("email");
+			usuario = document.getElementById("usuario");
+			password1 = document.getElementById("password1");
+			password2 = document.getElementById("password2");
+			boton = document.getElementById("boton");
+			boton.addEventListener("click",guardar);
+			localStorage.setItem("esta_logeado","false");
+		}
+
+		function guardar(){
+			if(password1.value == password2.value && password1.value!="")
+			{
+				if(usuario.value!="")
+				{
+					localStorage.setItem("usuario",usuario.value);
+					localStorage.setItem("clave",password1.value);
+					location.href = "index.html";
+				}
+				else
+				{
+					alert("Valide los datos");
+				}
+			}
+			else
+			{
+				alert("Valide los datos");
+			}
+		}
+	</script>
+</head>
+<body>
+	<!-- 
+	Tarea:
+	- Crear el html para el formulario de registro
+	- Como muestra la referencia: https://juanp-ctrl.github.io/Frontend_PPE/registro.html
+	- Validar que los campos no esten vacios
+	- Guardar los datos del usuario en el localstorage 
+    -->
+    <form id="formulario_registro">
+    	<label>Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="nombre"></label><br>
+    	<label>Apellido:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="apellido"></label><br>
+    	<label>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="email"></label><br>
+    	<label>Usuario:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="usuario"></label><br>
+    	<label>Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" id="password1"></label><br>
+    	<label>Confirmacion Password:<input type="password" id="password2"></label><br>
+    	<input type="button" value="Guardar" id="boton">
+    </form>
+</body>
+</html>
