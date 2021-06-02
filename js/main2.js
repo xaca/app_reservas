@@ -11,8 +11,9 @@ function cerrarVentana(){
 }
 
 function crearReserva(numero){
-	//alert(numero);
-	ventana.className = "ligthbox";
+	var puesto = document.getElementById("puesto_"+numero);
+	//ventana.className = "ligthbox";
+	puesto.className = "reservado";
 }
 
 function pintarCuadricula(){
