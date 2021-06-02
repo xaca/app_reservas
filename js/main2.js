@@ -2,7 +2,17 @@ window.onload = init;
 
 function init()
 {
-	pintarCuadricula();
+	//pintarCuadricula();
+	cerrar.addEventListener("click",cerrarVentana);
+}
+
+function cerrarVentana(){
+  ventana.className = "ligthbox hidden";
+}
+
+function crearReserva(numero){
+	//alert(numero);
+	ventana.className = "ligthbox";
 }
 
 function pintarCuadricula(){
