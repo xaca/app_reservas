@@ -15,11 +15,20 @@ function cerrarVentana(){
 function crearReserva(numero){
 	puesto_actual = document.getElementById("puesto_"+numero);
 	ventana.className = "ligthbox";
+	input_name.value = "";
 }
 
 function reservar(){
-	puesto_actual.className = "reservado";
-	cerrarVentana();
+	if(input_name.value!="")
+	{
+		puesto_actual.className = "reservado";
+		puesto_actual.innerHTML = "<h2>Reservado</h2>"+input_name.value;
+		cerrarVentana();
+	}
+	else
+	{
+		alert("Error, introduzca el nombre de la reserva");
+	}
 }
 
 function pintarCuadricula(){
