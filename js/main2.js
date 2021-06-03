@@ -1,3 +1,5 @@
+var puesto_actual;
+
 window.onload = init;
 
 function init()
@@ -11,9 +13,13 @@ function cerrarVentana(){
 }
 
 function crearReserva(numero){
-	var puesto = document.getElementById("puesto_"+numero);
-	//ventana.className = "ligthbox";
-	puesto.className = "reservado";
+	puesto_actual = document.getElementById("puesto_"+numero);
+	ventana.className = "ligthbox";
+}
+
+function reservar(){
+	puesto_actual.className = "reservado";
+	cerrarVentana();
 }
 
 function pintarCuadricula(){
