@@ -1,4 +1,5 @@
 var puesto_actual;
+var id_actual;
 
 window.onload = init;
 
@@ -6,6 +7,21 @@ function init()
 {
 	//pintarCuadricula();
 	cerrar.addEventListener("click",cerrarVentana);
+	cargarReserva();
+}
+
+function cargarReserva(){
+	var puesto;
+	for(var i=1;i<=9;i++)
+	{
+		//console.log(localStorage.getItem("puesto_"+i));
+		if(localStorage.getItem("puesto_"+i)!=null)
+		{
+			puesto = document.getElementById("puesto_"+i);
+			puesto.className = "reservado";
+			puesto.innerHTML = localStorage.getItem("puesto_"+i);
+		}
+	}
 }
 
 function cerrarVentana(){
@@ -13,7 +29,8 @@ function cerrarVentana(){
 }
 
 function crearReserva(numero){
-	puesto_actual = document.getElementById("puesto_"+numero);
+	id_actual = "puesto_"+numero;
+	puesto_actual = document.getElementById(id_actual);
 	ventana.className = "ligthbox";
 	input_name.value = "";
 }
@@ -23,6 +40,7 @@ function reservar(){
 	{
 		puesto_actual.className = "reservado";
 		puesto_actual.innerHTML = "<h2>Reservado</h2>"+input_name.value;
+		localStorage.setItem(id_actual,"<h2>Reservado</h2>"+input_name.value);
 		cerrarVentana();
 	}
 	else
