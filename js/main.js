@@ -13,15 +13,15 @@ function init()
 }
 
 function cargarReserva(){
-	var puesto;
-	for(var i=1;i<=9;i++)
+	var puesto, usuario;
+	for(var i=1;i<=9;i++)//i = i + 1
 	{
 		//console.log(localStorage.getItem("puesto_"+i));
 		if(localStorage.getItem("puesto_"+i)!=null)
 		{
-			puesto = document.getElementById("puesto_"+i);
-			puesto.className = "reservado";
-			puesto.innerHTML = localStorage.getItem("puesto_"+i);
+			puesto = document.getElementById("puesto_"+i);			
+			usuario = JSON.parse(localStorage.getItem("puesto_"+i));
+			actualizarEstado(puesto,usuario);
 		}
 	}
 }
@@ -42,15 +42,21 @@ function editarReserva(numero){
 	alert(numero);
 }
 
+function actualizarEstado(puesto,usuario)
+{
+	 var temp;
+	  puesto.className = "reservado";
+		temp = "<h2>Reservado</h2>"+usuario.nombre;
+		temp += '<img class="btn_editar" onClick="editarReserva('+usuario.id+');" src="imgs/btn_editar.svg" alt="">';
+		puesto.innerHTML = temp;
+}
+
 function reservar(){
-	var temp, usuario;
+	var usuario;
 	if(input_name.value!="")
 	{
-		puesto_actual.className = "reservado";
-		temp = "<h2>Reservado</h2>"+input_name.value;
-		temp += '<img class="btn_editar" onClick="editarReserva('+id_boton+');" src="imgs/btn_editar.svg" alt="">';
-		puesto_actual.innerHTML = temp;
 		usuario = {nombre:input_name.value,id:id_boton};
+		actualizarEstado(puesto_actual,usuario);
 		localStorage.setItem(id_actual,JSON.stringify(usuario));
 		cerrarVentana();
 	}
