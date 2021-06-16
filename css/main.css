@@ -27,18 +27,19 @@
 	margin: 0 auto;
 }
 .disponible{
+	position: relative;
 	border: 1px solid black;
 	text-align: center;
 	background: seagreen;
-	position: relative;
 }
 .reservado{
+	position: relative;
 	background-color: deeppink;
 	text-align: center;
 	color: lightpink;
 }
 
-.btn_agregar{
+.btn_agregar,.btn_editar{
 	position: absolute;
 	right: 10px;
 	bottom: 5px;
@@ -46,6 +47,7 @@
 	height: 16px;
 	cursor: pointer;
 }
+
 
 
 body{
