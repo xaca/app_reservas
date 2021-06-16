@@ -1,6 +1,7 @@
 var puesto_actual;
 var id_actual;
 var id_boton;
+var reservas;
 
 window.onload = init;
 
@@ -42,15 +43,15 @@ function editarReserva(numero){
 }
 
 function reservar(){
-	var temp;
+	var temp, usuario;
 	if(input_name.value!="")
 	{
 		puesto_actual.className = "reservado";
 		temp = "<h2>Reservado</h2>"+input_name.value;
 		temp += '<img class="btn_editar" onClick="editarReserva('+id_boton+');" src="imgs/btn_editar.svg" alt="">';
 		puesto_actual.innerHTML = temp;
-		console.log(temp);
-		localStorage.setItem(id_actual,temp);
+		usuario = {nombre:input_name.value,id:id_boton};
+		localStorage.setItem(id_actual,JSON.stringify(usuario));
 		cerrarVentana();
 	}
 	else
