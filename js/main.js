@@ -9,6 +9,7 @@ function init()
 {
 	//pintarCuadricula();
 	cerrar.addEventListener("click",cerrarVentana);
+	reservas = [];
 	cargarReserva();
 }
 
@@ -22,6 +23,7 @@ function cargarReserva(){
 			puesto = document.getElementById("puesto_"+i);			
 			usuario = JSON.parse(localStorage.getItem("puesto_"+i));
 			actualizarEstado(puesto,usuario);
+			reservas[i] = usuario;
 		}
 	}
 }
@@ -30,16 +32,21 @@ function cerrarVentana(){
   ventana.className = "ligthbox hidden";
 }
 
-function crearReserva(numero){
-	id_actual = "puesto_"+numero;
-	id_boton = numero;
+function mostrarVentana(datos)
+{
+	id_actual = "puesto_"+datos.numero;
+	id_boton = datos.numero;
 	puesto_actual = document.getElementById(id_actual);
 	ventana.className = "ligthbox";
-	input_name.value = "";
+	input_name.value = datos.nombre?datos.nombre:"";
+}
+
+function crearReserva(numero){
+	mostrarVentana({nombre:"",numero:numero});
 }
 
 function editarReserva(numero){
-	alert(numero);
+	mostrarVentana({nombre:reservas[numero].nombre,numero:numero});	
 }
 
 function actualizarEstado(puesto,usuario)
@@ -57,6 +64,7 @@ function reservar(){
 	{
 		usuario = {nombre:input_name.value,id:id_boton};
 		actualizarEstado(puesto_actual,usuario);
+		reservas[id_boton] = usuario;
 		localStorage.setItem(id_actual,JSON.stringify(usuario));
 		cerrarVentana();
 	}
