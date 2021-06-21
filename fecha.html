@@ -18,24 +18,26 @@
 			// btn_consultar.addEventListener("mouseleave",salir);
 		}
 
-		function entrar(){
-			console.log("entre");
-		}
-
-		function salir(){
-			console.log("sali");
-		}
-
 		function cargarReservas(){
 			//alert(fecha.value);
 			if(fecha.value != -1)
 			{
+				localStorage.setItem("hora",fecha.value);
 				location.href = "reserva.html";
 			}
 			else
 			{
 				alert("Error, debe seleccionar la hora");
 			}
+		}
+		
+
+		function entrar(){
+			console.log("entre");
+		}
+
+		function salir(){
+			console.log("sali");
 		}
 	</script>
 </head>
