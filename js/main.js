@@ -32,6 +32,7 @@ function cargarReserva(){
 				{
 					puesto = document.getElementById("puesto_"+i);			
 					usuario = reservas[i];
+					usuario.estado = "reservado";
 					actualizarEstado(puesto,usuario);
 				}
 			}
@@ -59,33 +60,52 @@ function crearReserva(numero){
 	mostrarVentana({nombre:"",numero:numero});
 }
 
+function actualizarReserva(usuario){
+	actualizarEstado(puesto_actual,usuario);
+	reservas[id_boton] = usuario;
+	horario[hora_actual] = reservas;
+	localStorage.setItem("horario",JSON.stringify(horario));
+}
+
 function editarReserva(numero){
 	mostrarVentana({nombre:reservas[numero].nombre,numero:numero});	
 }
 
 function eliminarReserva(numero){
-	alert("Se va a eliminar "+numero);
+	var entrada = confirm("¿Seguro que quiere borrar a "+numero+"?")
+	if(entrada)
+	{
+		id_boton = numero;
+		actualizarReserva(null);
+	}
 }
 
 function actualizarEstado(puesto,usuario)
 {
-	 var temp;
-	  puesto.className = "reservado";
+	var temp;
+	if(usuario!=null)
+	{
+		puesto.className = "reservado";
 		temp = "<h2>Reservado</h2>"+usuario.nombre;
 		temp += '<img class="btn_editar" onClick="editarReserva('+usuario.id+');" src="imgs/btn_editar.svg" alt="">';
 		temp += '<img src="imgs/btn_eliminar.svg" onClick="eliminarReserva('+usuario.id+');" class="btn_eliminar" alt="">';
-		puesto.innerHTML = temp;
+	}
+	else{
+		puesto = document.getElementById("puesto_"+id_boton);
+		puesto.className = "disponible";
+		temp = "<h2>Disponible</h2>";
+		temp += '<img class="btn_agregar" onClick="crearReserva('+id_boton+');" src="imgs/btn_agregar.svg" alt="">';
+	}
+	puesto.innerHTML = temp;
 }
+
 
 function reservar(){
 	var usuario;
 	if(input_name.value!="")
 	{
-		usuario = {nombre:input_name.value,id:id_boton};
-		actualizarEstado(puesto_actual,usuario);
-		reservas[id_boton] = usuario;
-		horario[hora_actual] = reservas;
-		localStorage.setItem("horario",JSON.stringify(horario));
+		usuario = {nombre:input_name.value,id:id_boton,estado:"reservado"};
+		actualizarReserva(usuario);
 		cerrarVentana();
 	}
 	else
