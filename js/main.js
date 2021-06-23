@@ -63,12 +63,17 @@ function editarReserva(numero){
 	mostrarVentana({nombre:reservas[numero].nombre,numero:numero});	
 }
 
+function eliminarReserva(numero){
+	alert("Se va a eliminar "+numero);
+}
+
 function actualizarEstado(puesto,usuario)
 {
 	 var temp;
 	  puesto.className = "reservado";
 		temp = "<h2>Reservado</h2>"+usuario.nombre;
 		temp += '<img class="btn_editar" onClick="editarReserva('+usuario.id+');" src="imgs/btn_editar.svg" alt="">';
+		temp += '<img src="imgs/btn_eliminar.svg" onClick="eliminarReserva('+usuario.id+');" class="btn_eliminar" alt="">';
 		puesto.innerHTML = temp;
 }
 

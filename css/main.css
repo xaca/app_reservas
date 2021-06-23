@@ -39,7 +39,7 @@
 	color: lightpink;
 }
 
-.btn_agregar,.btn_editar{
+.btn_agregar,.btn_editar,.btn_eliminar{
 	position: absolute;
 	right: 10px;
 	bottom: 5px;
@@ -49,6 +49,9 @@
 }
 
 
+.btn_editar{
+	right: 30px;
+}
 
 body{
 	margin: 0;
