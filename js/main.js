@@ -32,7 +32,6 @@ function cargarReserva(){
 				{
 					puesto = document.getElementById("puesto_"+i);			
 					usuario = reservas[i];
-					usuario.estado = "reservado";
 					actualizarEstado(puesto,usuario);
 				}
 			}
@@ -104,7 +103,7 @@ function reservar(){
 	var usuario;
 	if(input_name.value!="")
 	{
-		usuario = {nombre:input_name.value,id:id_boton,estado:"reservado"};
+		usuario = {nombre:input_name.value,id:id_boton};
 		actualizarReserva(usuario);
 		cerrarVentana();
 	}
