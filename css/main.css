@@ -55,6 +55,28 @@
 body{
 	margin: 0;
 	padding: 0;
+
+	background-image:#99dfff;
+	background-image:  
+	radial-gradient(at 73% 39%, hsla(68,84%,61%,1) 0, transparent 51%),  
+	radial-gradient(at 7% 57%, hsla(50,88%,78%,1) 0, transparent 53%),  
+	radial-gradient(at 55% 68%, hsla(194,81%,76%,1) 0, transparent 50%),  
+	radial-gradient(at 66% 6%, hsla(154,79%,73%,1) 0, transparent 53%),  
+	radial-gradient(at 3% 46%, hsla(293,88%,70%,1) 0, transparent 44%),  
+	radial-gradient(at 57% 36%, hsla(305,73%,78%,1) 0, transparent 43%),  
+	radial-gradient(at 62% 19%, hsla(265,69%,69%,1) 0, transparent 57%);
+
+	/*background-size: cover;*/
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	/*background-position: center;
+	*/
+}
+.titulo{
+	margin: 0 auto;
+	width: 250px;
+	text-align: center;
+	margin-bottom: 30px;
 }
 #abrir{
   width:150px;
