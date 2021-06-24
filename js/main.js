@@ -4,15 +4,35 @@ var id_boton;
 var reservas;
 var hora_actual;
 var horario;
-
+var colores = [];
+var fondo;
 window.onload = init;
 
 function init()
 {
+	fondo = document.getElementById('fondo_reserva');
 	//pintarCuadricula();
 	cerrar.addEventListener("click",cerrarVentana);
 	hora_actual = localStorage.getItem("hora");
+	iniciarColores();
+	fondo.style.backgroundColor = cambiarColor();
 	cargarReserva();
+}
+
+function iniciarColores(){
+	colores["5"] = "lightpink";
+	colores["6"] = "teal";
+	colores["7"] = "mediumturquoise";
+	colores["8"] = "burlywood";
+	colores["9"] = "ivory";
+	colores["16"] = "blanchedalmond";
+	colores["18"] = "coral";
+	colores["20"] = "dimgrey";
+}
+
+function cambiarColor()
+{
+	return colores[hora_actual];
 }
 
 function cargarReserva(){
