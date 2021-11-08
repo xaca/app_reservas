@@ -6,59 +6,23 @@
 	<title></title>
 	<script>
 		
-		let usuario, clave, btn_enviar;
-
-		window.onload = function(){
-			usuario = document.getElementById("usuario");
-			clave = document.getElementById("clave");
-			btn_enviar = document.getElementById("btn_enviar");
-
-			btn_enviar.addEventListener("click",obtenerDatos);
-		}
-
-		function obtenerDatos(evento){
-
-			/*
-			Validar que el value no sea vacio y si usuario es admin y la clave 123
-			mostrar un mensaje de inicio de sesion exitoso
-			*/
-			let usuario_ok = localStorage.getItem("usuario"); 
-			let clave_ok = localStorage.getItem("clave"); 
-			console.log(localStorage.getItem("usuario"),localStorage.getItem("clave"));
-
-			if(usuario.value != "" && clave.value!="")
-			{
-				if(usuario.value==usuario_ok && clave.value==clave_ok)
-				{
-					alert("Inicio de sesion exitoso");
-					localStorage.setItem("esta_logeado","true");
-					location.href = "fecha.html";
-				}
-				else
-				{
-					alert("Usuario o clave incorrectas");
-					usuario.value = "";
-					clave.value = "";
-					localStorage.setItem("esta_logeado","false");
-				}
-			}
-			else
-			{
-				alert("Error datos vacios");
-				localStorage.setItem("esta_logeado","false");
-			}
-		}
-
 	</script>
 </head>
 <body>
+	<img src="imgs/logo.png" alt="">
+	<h2>Inicio de sesión</h2>
 	<form id="logeo">
-		<input type="text" placeholder="Usuario" id="usuario" value="nerd"> <br>
-		<input type="password" placeholder="Password" id="clave"> <br>
-
-		<a href="registro.html">Registrate</a> <br><br>
-
-		<input type="button" value="Enviar" id="btn_enviar">
+		<label for="usuario">
+			Usuario: <br>
+			<input type="text" placeholder="Usuario" id="usuario" value=""> 
+		</label><br><br>
+		<label for="clave">
+			Contraseña:<br>
+			<input type="password" placeholder="Contraseña" id="clave"> 
+		</label>
+		<br><br>
+		<a href="registro.html">Registrate</a><br>
+		<input type="button" value="Iniciar Sesión" id="btn_enviar">
 	</form>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/main.css">
 	<title></title>
 	<script>
 		var btn_consultar;
@@ -42,18 +43,21 @@
 	</script>
 </head>
 <body>
-	<h2>Horarios</h2>
-	<select id="fecha">
-		<option value="-1">Seleccion la hora</option>
-		<option value="5">5:00</option>
-		<option value="6">6:00</option>
-		<option value="7">7:00</option>
-		<option value="8">8:00</option>
-		<option value="9">9:00</option>
-		<option value="16">16:00</option>
-		<option value="18">18:00</option>
-		<option value="20">20:00</option>
-	</select>
-	<input type="button" id="btn_consultar" value="Consultar" />
+	<div id="sel_horarios">
+		<h2>Horarios</h2>
+		<select id="fecha">
+			<option value="-1">Seleccion la hora</option>
+			<option value="5">5:00</option>
+			<option value="6">6:00</option>
+			<option value="7">7:00</option>
+			<option value="8">8:00</option>
+			<option value="9">9:00</option>
+			<option value="16">16:00</option>
+			<option value="18">18:00</option>
+			<option value="20">20:00</option>
+		</select>
+		<br><br>
+		<input type="button" onclick="javascript:location.href='reserva.html';" id="btn_consultar" value="Consultar" />
+	</div>
 </body>
 </html>

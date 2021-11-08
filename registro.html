@@ -5,38 +5,66 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Registro</title>
 	<script>
-		var nombre,apellido,email,usuario,password1,password2,boton;
+		let usuarios;
+		let nombre,apellido,correo,usuario,clave;
+		let boton_enviar;
 
-		window.onload = function(){
+		window.onload = init;
+
+		function init(){
+			let temp;
+			boton_enviar = document.getElementById("boton");
 			nombre = document.getElementById("nombre");
 			apellido = document.getElementById("apellido");
-			email = document.getElementById("email");
+			correo = document.getElementById("email");
 			usuario = document.getElementById("usuario");
-			password1 = document.getElementById("password1");
-			password2 = document.getElementById("password2");
-			boton = document.getElementById("boton");
-			boton.addEventListener("click",guardar);
-			localStorage.setItem("esta_logeado","false");
+			clave = document.getElementById("password1");
+			boton_enviar.addEventListener("click",registrarUsuario);
+			temp = localStorage.getItem("usuarios"); 
+			if(temp)
+			{
+				usuarios = JSON.parse(temp);
+			}
+			else{
+				usuarios = [];
+			}
 		}
 
-		function guardar(){
-			if(password1.value == password2.value && password1.value!="")
+		function registrarUsuario(event){
+			let temp = {};
+			temp.nombre = nombre.value;
+			temp.apellido = apellido.value;
+			temp.correo = correo.value;
+			temp.usuario = usuario.value;
+			temp.clave = clave.value;
+
+			console.log(temp,validarUsuario(temp));
+			
+			if(validarUsuario(temp))
 			{
-				if(usuario.value!="")
-				{
-					localStorage.setItem("usuario",usuario.value);
-					localStorage.setItem("clave",password1.value);
-					location.href = "index.html";
-				}
-				else
-				{
-					alert("Valide los datos");
-				}
+				nombre.value = apellido.value = "";
+				correo.value = usuario.value  = clave.value= "";
+				usuarios.push(temp);
+				//console.log(JSON.stringify(usuarios));
+				localStorage.setItem("usuarios",JSON.stringify(usuarios));
 			}
 			else
 			{
-				alert("Valide los datos");
+				alert("Error valida los datos");
 			}
+		}
+
+		function validarUsuario(usuario_consulta){
+			let temp;
+			for(var i in usuarios)
+			{
+				temp = usuarios[i];
+				if(temp.correo===usuario_consulta.correo)
+				{
+					return false;
+				}
+			}
+			return true;
 		}
 	</script>
 </head>
@@ -48,13 +76,26 @@
 	- Validar que los campos no esten vacios
 	- Guardar los datos del usuario en el localstorage 
     -->
+    <a href="index.html">Volver</a>
     <form id="formulario_registro">
-    	<label>Nombre:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="nombre"></label><br>
-    	<label>Apellido:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="apellido"></label><br>
-    	<label>Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="email"></label><br>
-    	<label>Usuario:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="usuario"></label><br>
-    	<label>Password:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" id="password1"></label><br>
-    	<label>Confirmacion Password:<input type="password" id="password2"></label><br>
+    	<label for="nombre">Nombre:
+    		<input type="text" id="nombre">
+    	</label><br>
+    	<label for="apellido">Apellido:
+    		<input type="text" id="apellido">
+    	</label><br>
+    	<label for="email">Email:
+    		<input type="text" id="email">
+    	</label><br>
+    	<label for="usuario">Usuario:
+    		<input type="text" id="usuario">
+    	</label><br>
+    	<label for="password1">Password:
+    		<input type="password" id="password1">
+    	</label><br>
+    	<label for="password2">Confirmación Password:
+    		<input type="password" id="password2">
+    	</label><br>
     	<input type="button" value="Guardar" id="boton">
     </form>
 </body>

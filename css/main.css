@@ -161,3 +161,31 @@ body{
 	height: 40px;
 	border-radius: 5px;
 }
+
+#sel_horarios{
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+	text-align: center;
+	width: 50%;
+	margin: 0 auto;
+
+}
+/* Celular */
+@media only screen and  (min-width: 320px) and (max-width: 540px)
+{
+	#cuadricula{
+		grid-template-columns: 1fr;
+		grid-template-rows: repeat(3, 1fr); 
+		grid-column-gap: 0px;
+		grid-row-gap: 0px;
+		width: 90%;
+	}
+}
+
+/* Tablet */
+@media only screen and (min-width: 541px) and (max-width: 1024px){
+}
+
+/*Escritorio*/
+@media only screen and (min-width: 1025px){}
