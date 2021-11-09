@@ -52,11 +52,23 @@
 	right: 30px;
 }
 
+.boton{
+	width: 150px;
+	height: 30px;
+	margin-top: 10px;
+	background-color: #00acb3;
+	color: white;
+	cursor: pointer;
+}
+.boton:hover{
+	background-color:white;
+	color:#00acb3;
+}
 body{
 	margin: 0;
 	padding: 0;
 
-	background-image:#99dfff;
+	/*background-image:#99dfff;
 	background-image:  
 	radial-gradient(at 73% 39%, hsla(68,84%,61%,1) 0, transparent 51%),  
 	radial-gradient(at 7% 57%, hsla(50,88%,78%,1) 0, transparent 53%),  
@@ -64,7 +76,7 @@ body{
 	radial-gradient(at 66% 6%, hsla(154,79%,73%,1) 0, transparent 53%),  
 	radial-gradient(at 3% 46%, hsla(293,88%,70%,1) 0, transparent 44%),  
 	radial-gradient(at 57% 36%, hsla(305,73%,78%,1) 0, transparent 43%),  
-	radial-gradient(at 62% 19%, hsla(265,69%,69%,1) 0, transparent 57%);
+	radial-gradient(at 62% 19%, hsla(265,69%,69%,1) 0, transparent 57%);*/
 
 	/*background-size: cover;*/
 	background-repeat: no-repeat;
@@ -166,10 +178,71 @@ body{
 	display: flex;
 	justify-content: space-around;
 	flex-direction: column;
-	text-align: center;
-	width: 50%;
+	width: 400px;
+	height: 200px;
 	margin: 0 auto;
+	background-color: #d9d6d6;
+	margin-top: 40px;
+	padding: 10px;
+	border-radius: 20px;
+	text-align: center;
+}
+#btn_consultar{
+	margin: 0 auto;
+}
+#contenedor_inicio{
+	width: 300px;
+	height: 350px;
+	margin: 0 auto;
+	margin-top: 70px;
+	background-color: #d9d6d6;
+	text-align: center;
+	padding-top: 40px;
+	border-radius: 20px;
+}
 
+#formulario_registro{
+	display: grid;
+	border-radius: 20px;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px; 
+	text-align: right;
+	margin-top: 25px;
+}
+
+#contenedor_registro{
+	width: 640px;
+	height: 280px;
+	margin: 0 auto;
+	background-color: #d9d6d6;
+	border-radius: 20px;
+	padding: 10px;
+	margin-top: 40px;
+}
+
+#contenedor_boton { 
+	grid-area: 4 / 2 / 5 / 3; 
+	text-align: right;
+} 
+#btn_registrar{
+
+}
+#menu_navegacion{
+	position: relative;
+	height: 80px;
+}
+
+#logo_titulo_seccion{
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+#btn_volver{
+	position: absolute;
+	top: 45px;
+	right: 5px;
 }
 /* Celular */
 @media only screen and  (min-width: 320px) and (max-width: 540px)

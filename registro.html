@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Registro</title>
+	<link rel="stylesheet" href="css/main.css">
 	<script>
 		let usuarios;
 		let nombre,apellido,correo,usuario,clave;
@@ -76,27 +77,44 @@
 	- Validar que los campos no esten vacios
 	- Guardar los datos del usuario en el localstorage 
     -->
-    <a href="index.html">Volver</a>
-    <form id="formulario_registro">
-    	<label for="nombre">Nombre:
-    		<input type="text" id="nombre">
-    	</label><br>
-    	<label for="apellido">Apellido:
-    		<input type="text" id="apellido">
-    	</label><br>
-    	<label for="email">Email:
-    		<input type="text" id="email">
-    	</label><br>
-    	<label for="usuario">Usuario:
-    		<input type="text" id="usuario">
-    	</label><br>
-    	<label for="password1">Password:
-    		<input type="password" id="password1">
-    	</label><br>
-    	<label for="password2">Confirmación Password:
-    		<input type="password" id="password2">
-    	</label><br>
-    	<input type="button" value="Guardar" id="boton">
-    </form>
+    <div id="contenedor_registro">
+    	<nav id="menu_navegacion">
+	    	<label id="logo_titulo_seccion">
+		    	<img src="imgs/logo.png" alt=""> &nbsp;
+		    	Registro de usuario
+	    	</label>
+		    <a id="btn_volver" href="index.html">Volver</a>
+    	</nav>
+	    <form id="formulario_registro">
+	    	<label for="nombre">
+	    		Nombre:
+	    		<input type="text" id="nombre">
+	    	</label>
+	    	<label for="apellido">
+	    		Apellido:
+	    		<input type="text" id="apellido">
+	    	</label>
+	    	<label for="email">
+	    		Email:
+	    		<input type="text" id="email">
+	    	</label>
+	    	<label for="usuario">
+	    		Usuario:
+	    		<input type="text" id="usuario">
+	    	</label>
+	    	<label for="password1">
+	    		Password:
+	    		<input type="password" id="password1">
+	    	</label>
+	    	<label for="password2">
+	    		Confirmación Password:
+	    		<input type="password" id="password2">
+	    	</label>
+	    	<span>&nbsp;</span>
+	    	<div id="contenedor_boton">
+	    		<input type="button" value="Guardar" class="boton" id="btn_registrar">
+	    	</div>
+	    </form>
+    </div>
 </body>
 </html>
